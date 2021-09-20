@@ -1,0 +1,35 @@
+/*
+COLORS:
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+
+/* stops browsers from adding default margins or padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+/* sets to 95% of vh - veiwport height */
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right top, 
+        hsla(111, 55%, 64%, 0.795),
+        hsla(160, 64%, 43%, 0.795)), 
+        url(../IMG/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
+}
