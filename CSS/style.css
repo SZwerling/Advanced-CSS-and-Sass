@@ -6,19 +6,27 @@ Dark green: #28b485
 */
 
 /* stops browsers from adding default margins or padding */
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit; /*slightly better practice to put border-box in body, for puglins and such*/
+}
+
+/*want root font size to be 10 so rem is easy to calculate.
+However, if we put 10px here, it will be more difficult for sight-impaired people to adjust their default browser settings */
+html {
+    font-size: 62.5%; 
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 /* sets to 95% of vh - veiwport height 
@@ -38,35 +46,35 @@ gradient is on top because listed first*/
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /*to center header*/
     text-align: center;  /*to center the button*/
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
-    backface-visibility: hidden;
-    margin-bottom: 60px;
+    backface-visibility: hidden; /*to stop shaking on animation*/
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
-    margin-right: -35px;
+    letter-spacing: 3.5rem;
+    margin-right: -3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -75,10 +83,10 @@ gradient is on top because listed first*/
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
-    margin-right: -17.4px;
+    letter-spacing: 1.75rem;
+    margin-right: -1.75rem;
 
     animation: moveInRight 1s ease-out;
 }
@@ -86,11 +94,11 @@ gradient is on top because listed first*/
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
@@ -102,11 +110,11 @@ gradient is on top because listed first*/
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -118,7 +126,7 @@ gradient is on top because listed first*/
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(10rem);
     }
 
     100% {
@@ -131,21 +139,22 @@ gradient is on top because listed first*/
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block; /*so can add padding*/
-    border-radius: 100px;
-    transition: all .2s;
+    padding: 1.5rem 4rem;
+    display: inline-block; /*so can add padding, width or height but no line break*/
+    border-radius: 10rem;
+    transition: all .2s;/*enables animation of all props*/
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+.btn:active {  /*when clicked*/
+    transform: translateY(-.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -158,11 +167,11 @@ gradient is on top because listed first*/
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
+    border-radius: 10rem;
+    position: absolute;/*in relation to parent elem .btn, so .btn position is relative*/
+    top: 0;/*puts it directly behind parent .btn element*/
     left: 0;
-    z-index: -1;
+    z-index: -1;/*def behind .btn*/
     transition: all .4s;
 }
 
@@ -177,5 +186,5 @@ gradient is on top because listed first*/
 
 .btn-animated {
     animation: moveInBottom 1s ease-out .75s;
-    animation-fill-mode: backwards;
+    animation-fill-mode: backwards;/*starts animation at altered state*/
 }
