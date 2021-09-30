@@ -9,6 +9,9 @@ Dark green: #28b485
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
 
 
 
@@ -51,54 +54,58 @@ gradient is on top because listed first*/
     background-position: top;
     clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
     position: relative;
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+    
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%); /*to center header*/
+        text-align: center;  /*to center the button*/
+    }
 }
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
 
-.header__logo {
-    height: 3.5rem;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); /*to center header*/
-    text-align: center;  /*to center the button*/
-}
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
     backface-visibility: hidden; /*to stop shaking on animation*/
     margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        margin-right: -3.5rem;
+    
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        margin-right: -1.75rem;
+    
+        animation: moveInRight 1s ease-out;
+    }
 }
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    margin-right: -3.5rem;
 
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    margin-right: -1.75rem;
-
-    animation: moveInRight 1s ease-out;
-}
 
 @keyframes moveInLeft {
     0% {
@@ -144,56 +151,60 @@ gradient is on top because listed first*/
     }
 }
 
-.btn:link, 
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block; /*so can add padding, width or height but no line break*/
-    border-radius: 10rem;
-    transition: all .2s;/*enables animation of all props*/
-    position: relative;
-    font-size: 1.6rem;
-}
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
+.btn {
+    &:link, 
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /*so can add padding, width or height but no line break*/
+        border-radius: 10rem;
+        transition: all .2s;/*enables animation of all props*/
+        position: relative;
+        font-size: 1.6rem;
+    }
 
-.btn:active {  /*when clicked*/
-    transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .4);
 
-.btn--white {
-    background-color: #fff;
-    color: 777;
-}
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
 
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;/*in relation to parent elem .btn, so .btn position is relative*/
-    top: 0;/*puts it directly behind parent .btn element*/
-    left: 0;
-    z-index: -1;/*def behind .btn*/
-    transition: all .4s;
-}
+    &:active {  /*when clicked*/
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .6);
+    }
 
-.btn--white::after {
-     background-color: #fff;
-}
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
 
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
+        &::after {
+            background-color: $color-white;
+        }
+    }
 
-.btn--animated {
-    animation: moveInBottom 1s ease-out .75s;
-    animation-fill-mode: backwards;/*starts animation at altered state*/
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;/*in relation to parent elem &, so & position is relative*/
+        top: 0;/*puts it directly behind parent & element*/
+        left: 0;
+        z-index: -1;/*def behind &*/
+        transition: all .4s;
+    }
+
+
+    &--animated {
+        animation: moveInBottom 1s ease-out .75s;
+        animation-fill-mode: backwards;/*starts animation at altered state*/
+    }
 }
