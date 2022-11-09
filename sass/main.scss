@@ -29,7 +29,7 @@ pseudo elements  */
 /*want root font size to be 10 so rem is easy to calculate.
 However, if we put 10px here, it will be more difficult for sight-impaired people to adjust their default browser settings */
 html {
-    font-size: 62.5%; /*aiming for 62.5% of the standard 16px, which is 10px*/
+    font-size: 62.5%; /*aiming for 62.5% of the standard 16px, which is 10px so 1rem is 10px*/
 }
 
 body {
@@ -44,7 +44,7 @@ body {
 /* sets to 95% of vh - veiwport height 
 gradient is on top because listed first*/
 .header {
-    height: 95vh;
+    height: 95vh;  //95% of viewport height
     background-image: linear-gradient(
         to right top, 
         rgba($color-primary-light, 0.8),
@@ -67,9 +67,9 @@ gradient is on top because listed first*/
     
     &__text-box {
         position: absolute;
-        top: 40%;
+        top: 40%;  //top and left to center box at top left
         left: 50%;
-        transform: translate(-50%, -50%); /*to center header*/
+        transform: translate(-50%, -50%); /*to center to the center of the box*/
         text-align: center;  /*to center the button*/
     }
 }

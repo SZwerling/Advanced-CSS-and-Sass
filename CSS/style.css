@@ -6,8 +6,8 @@ Dark green: #28b485
 */
 /* stops browsers from adding default margins or padding 
 selecting all elements, along with all before and after
-pseudo elements  */
-*,
+pseudo elements  
+*,k
 *::after,
 *::before {
   margin: 0;
@@ -65,9 +65,7 @@ gradient is on top because listed first*/
     font-weight: 400;
     letter-spacing: 3.5rem;
     margin-right: -3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; }
+    animation: moveInLeft 1.5s normal linear;}
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -79,12 +77,26 @@ gradient is on top because listed first*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
-  80% {
-    transform: translateX(1rem); }
+    transform: translateX(-10rem) rotate(0deg); 
+  }
+  25% {
+    transform: rotate(90deg)
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg)
+  }
+  /* 80% {
+    transform: translateX(1rem) rotate(300deg); 
+  } */
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translateX(0) rotate(360deg);
+  } 
+}
 
 @keyframes moveInRight {
   0% {
@@ -94,7 +106,9 @@ gradient is on top because listed first*/
     transform: translateX(-1rem); }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0); 
+  } 
+}
 
 @keyframes moveInBottom {
   0% {
@@ -117,16 +131,16 @@ gradient is on top because listed first*/
   font-size: 1.6rem; }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+  transform: translateY(-3px);  /*button moves up on hover*/
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); } /*shadow grows on hover*/
   .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0; }
 
 .btn:active {
   /*when clicked*/
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.6); }
+  transform: translateY(-0.1rem);/*lower than hover, higher than initial state */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.6); } /*shadow decreases from hover*/
 
 .btn--white {
   background-color: #fff;
